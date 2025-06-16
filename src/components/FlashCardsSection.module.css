@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap');
+
+.flashCardsSection {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: auto;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.card {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 4px 32px #34495e22;
+  padding: 2.5rem 2rem;
+  min-width: 260px;
+  max-width: 340px;
+  flex: 1 1 300px;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 2px solid #f47c3c11;
+}
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 40px #34495e33;
+  border-color: #f9a66c;
+}
+
+.cardTitle {
+  color: #2c3e50;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.cardText {
+  color: #34495e;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .cardsContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    max-width: 90vw;
+    min-width: 220px;
+  }
+}

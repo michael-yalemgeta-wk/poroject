@@ -1,0 +1,113 @@
+.processSection {
+  width: 100vw;
+  padding: 0 0 4rem 0;
+  background: linear-gradient(120deg, #f7f9fa 60%, #ecf0f1 100%);
+  border-top: 2px solid #ecf0f1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sectionTitle {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #2C3E50;
+  margin: 3rem 0 2.5rem 0;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+.stepsRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.2rem;
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 2vw;
+  position: relative;
+}
+@media (max-width: 1000px) {
+  .stepsRow {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 1vw;
+  }
+}
+.stepBlock {
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 16px #34495e11;
+  padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+  min-height: 180px;
+  position: relative;
+}
+.icon {
+  background: #F47C3C;
+  border-radius: 50%;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.7rem;
+  box-shadow: 0 0 16px #f47c3c55, 0 2px 8px #f47c3c22;
+  position: relative;
+}
+.numberBadge {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #F47C3C;
+  border: 2px solid #F47C3C;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px #f47c3c22;
+  animation: badgeIn 0.7s cubic-bezier(.4,1.6,.6,1) both;
+}
+@keyframes badgeIn {
+  0% { transform: translateX(-50%) scale(0.7); opacity: 0; }
+  60% { transform: translateX(-50%) scale(1.15); opacity: 1; }
+  100% { transform: translateX(-50%) scale(1); }
+}
+.title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #2C3E50;
+  margin-bottom: 0.7rem;
+  text-align: center;
+}
+.desc {
+  color: #95A5A6;
+  font-size: 1.05rem;
+  text-align: center;
+  font-weight: 500;
+}
+/* Timeline divider for desktop */
+.stepsRow::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 6%;
+  right: 6%;
+  height: 0;
+  border-top: 2.5px dashed #F47C3C55;
+  z-index: 0;
+}
+@media (max-width: 1000px) {
+  .stepsRow::before {
+    display: none;
+  }
+}

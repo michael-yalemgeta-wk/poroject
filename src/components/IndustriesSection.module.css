@@ -1,0 +1,73 @@
+.industriesSection {
+  width: 100vw;
+  padding: 0 0 4rem 0;
+  background: linear-gradient(120deg, #fff 60%, #ECF0F1 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sectionTitle {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #2C3E50;
+  margin: 3rem 0 2.5rem 0;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(160px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 2vw;
+}
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1vw;
+  }
+}
+.card {
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 16px #34495e11, 0 1.5px 8px #f47c3c11;
+  padding: 1.5rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+  cursor: pointer;
+  border: 2px solid #F47C3C22;
+  position: relative;
+}
+.card:hover {
+  background: #F47C3C11;
+  border-color: #F47C3C;
+}
+.icon {
+  font-size: 2.1rem;
+  margin-bottom: 0.5rem;
+  color: #F47C3C;
+}
+.label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2C3E50;
+  margin-bottom: 0.2rem;
+}
+.metric {
+  font-size: 0.98rem;
+  color: #34495E;
+  background: #F47C3C22;
+  border-radius: 1rem;
+  padding: 0.2rem 0.8rem;
+  margin-top: 0.3rem;
+  font-weight: 600;
+}

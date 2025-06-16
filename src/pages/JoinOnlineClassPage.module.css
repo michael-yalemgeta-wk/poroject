@@ -1,0 +1,99 @@
+.bg {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(-45deg, #2C3E50, #203A43, #F47C3C, #2C3E50);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease-in-out infinite;
+  overflow: hidden;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 420px;
+  padding: 2.5rem 1.5rem;
+  background: rgba(44, 62, 80, 0.85);
+  border-radius: 2rem;
+  box-shadow: 0 8px 40px #34495e33;
+}
+
+.illustration {
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 16px #F47C3C88);
+}
+
+.headline {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  color: #F47C3C;
+  text-align: center;
+  letter-spacing: 1px;
+  margin: 0;
+  text-shadow: 0 2px 16px #f47c3c22;
+}
+
+.subtext {
+  font-size: 1.2rem;
+  color: #ECF0F1;
+  text-align: center;
+  margin: 0 0 0.5rem 0;
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+.notifyForm {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.emailInput {
+  width: 100%;
+  max-width: 320px;
+  padding: 0.7rem 1.1rem;
+  border-radius: 1.5rem;
+  border: none;
+  background: #fff8f3;
+  color: #34495e;
+  font-size: 1rem;
+  outline: none;
+  box-shadow: 0 2px 8px #f47c3c22;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.backBtn {
+  margin-top: 0.5rem;
+  padding: 0.9rem 2.2rem;
+  border-radius: 2rem;
+  border: none;
+  background: #F47C3C;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 2px 16px #f47c3c33;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  outline: none;
+  animation: pulseGlow 2.2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 16px #F47C3C55; }
+  100% { box-shadow: 0 0 32px #F47C3C99; }
+}

@@ -1,0 +1,81 @@
+.portfolioSection {
+  width: 100vw;
+  padding: 0 0 4rem 0;
+  background: linear-gradient(120deg, #ECF0F1 60%, #fff 100%);
+  /* Optional: subtle pattern overlay */
+  background-image: repeating-linear-gradient(135deg, #f7f9fa11 0 2px, transparent 2px 40px);
+  border-top: 2px solid #ecf0f1;
+  border-bottom: 2px solid #ecf0f1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sectionTitle {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #2C3E50;
+  margin: 3rem 0 2.5rem 0;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 2.2rem;
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 2vw;
+}
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1vw;
+  }
+}
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px #34495e11, 0 1.5px 8px #f47c3c11;
+  padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: box-shadow 0.2s, transform 0.2s;
+  min-height: 180px;
+  position: relative;
+}
+.card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 32px #34495e22, 0 2px 16px #f47c3c33;
+}
+.title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2C3E50;
+  margin-bottom: 0.5rem;
+}
+.desc {
+  color: #34495E;
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 0.7rem;
+}
+.outcome {
+  background: #F47C3C;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 1rem;
+  padding: 0.3rem 1.1rem;
+  font-size: 1rem;
+  margin-bottom: 0.7rem;
+  box-shadow: 0 1px 8px #f47c3c22;
+  display: inline-block;
+}
+.link {
+  color: #F47C3C;
+  font-weight: 700;
+  text-decoration: underline;
+  font-size: 1rem;
+  margin-top: 0.2rem;
+}

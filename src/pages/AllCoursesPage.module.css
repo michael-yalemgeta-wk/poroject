@@ -1,0 +1,208 @@
+.allCoursesPage {
+  min-height: 100vh;
+  width: 100vw;
+  background: #000; /* Black background */
+  color: #fff; /* White text */
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  padding: 0 0 4rem 2rem; /* Shift content to the right */
+}
+
+.header {
+  width: 100%;
+  max-width: 100%;
+  background: #111; /* Darker header background */
+  padding: 2.5rem 0 1.5rem 2rem; /* Align with page padding */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align content to the left */
+  box-sizing: border-box;
+  gap: 1.2rem;
+}
+
+.searchBar {
+  width: 90%;
+  max-width: 480px;
+  padding: 0.9rem 1.5rem;
+  border-radius: 32px;
+  border: none;
+  background: #222; /* Dark input background */
+  color: #fff; /* White text */
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px #00000033;
+  outline: none;
+}
+
+.searchBar::placeholder {
+  color: #888; /* Light gray placeholder */
+}
+
+.categories {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  width: 90vw;
+  max-width: 700px;
+  padding-bottom: 0.2rem;
+}
+
+.category {
+  background: #fff;
+  color: #34495e;
+  border: none;
+  border-radius: 18px;
+  padding: 0.5rem 1.3rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px #34495e11;
+}
+
+.category.active, .category:hover {
+  background: #f47c3c;
+  color: #fff;
+}
+
+.sortSelect {
+  border-radius: 18px;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  background: #fff;
+  color: #2c3e50;
+  box-shadow: 0 2px 8px #34495e11;
+  outline: none;
+}
+
+.coursesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.2rem;
+  width: 90%;
+  max-width: 1200px;
+  margin: 2.5rem auto 0 auto;
+  box-sizing: border-box;
+}
+
+.courseCard {
+  background: #111; /* Dark card background */
+  border-radius: 24px;
+  box-shadow: 0 4px 32px #00000033;
+  overflow: hidden;
+  min-width: 220px;
+  max-width: 340px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 2px solid #333; /* Subtle border */
+  text-align: left;
+  margin: 0;
+}
+
+.courseThumb {
+  width: 100%;
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+}
+
+.courseContent {
+  padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.courseTitle {
+  font-size: 1.2rem;
+  color: #fff; /* White text */
+  font-weight: 700;
+  margin: 0 0 0.3rem 0;
+}
+
+.courseDesc {
+  font-size: 1rem;
+  color: #ccc; /* Light gray text */
+  margin: 0 0 0.5rem 0;
+}
+
+.courseMeta {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.7rem;
+}
+
+.tag {
+  background: #333; /* Dark tag background */
+  color: #fff; /* White text */
+  border-radius: 12px;
+  padding: 0.2rem 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.courseBtn {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.7rem 1.7rem;
+  border: none;
+  border-radius: 24px;
+  background: #444; /* Dark button background */
+  color: #fff; /* White text */
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px #00000033;
+}
+
+.courseBtn:hover {
+  background: #666; /* Lighter hover background */
+  transform: scale(1.05);
+}
+
+.loadMoreBtn {
+  display: block;
+  margin: 2.5rem auto 0 auto;
+  padding: 0.8rem 2.2rem;
+  border-radius: 32px;
+  border: none;
+  background: #f47c3c;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 16px #f47c3c33;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.loadMoreBtn:hover {
+  background: #f9a66c;
+  color: #2c3e50;
+  transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+  .coursesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1.5rem 0 1rem 0;
+  }
+  .coursesGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 98vw;
+    max-width: 98vw;
+  }
+  .courseCard {
+    min-width: 0;
+    max-width: 98vw;
+  }
+}

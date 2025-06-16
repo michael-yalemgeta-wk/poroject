@@ -1,0 +1,117 @@
+.heroSection {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.bgGradient {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(-45deg, #2C3E50, #34495E, #F47C3C, #2C3E50);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 700px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+.headline {
+  color: #2C3E50;
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  font-weight: 900;
+  margin-bottom: 1.2rem;
+  letter-spacing: 1px;
+  line-height: 1.1;
+  text-shadow: 0 2px 16px #2c3e5011;
+}
+
+.subtext {
+  color: #ECF0F1;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 2.2rem;
+  max-width: 600px;
+  text-shadow: 0 2px 16px #34495e22;
+}
+
+.ctaRow {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.cta, .ctaSecondary {
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem 2.2rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 16px #f47c3c22;
+}
+
+.cta {
+  background: #F47C3C;
+  color: #fff;
+}
+.cta:hover {
+  background: #F9A66C;
+  transform: scale(1.05);
+}
+
+.ctaSecondary {
+  background: #fff;
+  color: #F47C3C;
+  border: 2px solid #F47C3C;
+}
+.ctaSecondary:hover {
+  background: #F9A66C;
+  color: #fff;
+  border: 2px solid #F9A66C;
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .heroContent {
+    padding: 1.2rem 0.5rem;
+  }
+  .headline {
+    font-size: 2rem;
+  }
+  .subtext {
+    font-size: 1rem;
+  }
+  .cta, .ctaSecondary {
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+  }
+  .ctaRow {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
