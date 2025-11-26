@@ -2,8 +2,13 @@ import styles from './ServiceHeroSection.module.css';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { serviceHeroData } from '../data/harddata';
 
-export default function ServiceHeroSection({ onQuote }: { onQuote?: () => void }) {
+export default function ServiceHeroSection({
+  onQuote,
+}: {
+  onQuote?: () => void;
+}) {
   const navigate = useNavigate();
   const [fadeOut, setFadeOut] = useState(false);
 
@@ -29,7 +34,7 @@ export default function ServiceHeroSection({ onQuote }: { onQuote?: () => void }
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 0.7 }}
         >
-          Build a Bold Digital Brand That Stands Out.
+          {serviceHeroData.headline}
         </motion.h1>
         <motion.p
           className={styles.subtext}
@@ -37,7 +42,7 @@ export default function ServiceHeroSection({ onQuote }: { onQuote?: () => void }
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.25, duration: 0.7 }}
         >
-          Empowering brands through stunning visuals, immersive web experiences, and impactful strategy.
+          {serviceHeroData.subtext}
         </motion.p>
         <motion.div
           className={styles.ctaRow}
@@ -45,15 +50,26 @@ export default function ServiceHeroSection({ onQuote }: { onQuote?: () => void }
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.7 }}
         >
-          <button className={styles.cta} onClick={onQuote}>Order Us</button>
-          <button className={styles.ctaSecondary} onClick={handleSeeOurWork}>See Our Work</button>
+          <button className={styles.cta} onClick={onQuote}>
+            {serviceHeroData.ctaPrimary}
+          </button>
+          <button className={styles.ctaSecondary} onClick={handleSeeOurWork}>
+            {serviceHeroData.ctaSecondary}
+          </button>
         </motion.div>
       </motion.div>
       <motion.div
         initial={{ opacity: 1 }}
         animate={{ opacity: fadeOut ? 0 : 1 }}
         transition={{ duration: 0.4 }}
-        style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: '#fff', zIndex: 10, display: fadeOut ? 'block' : 'none' }}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          background: '#fff',
+          zIndex: 10,
+          display: fadeOut ? 'block' : 'none',
+        }}
       />
     </section>
   );

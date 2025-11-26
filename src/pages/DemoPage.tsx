@@ -4,6 +4,7 @@ import { FaCode, FaPaintBrush, FaVideo, FaBullhorn } from 'react-icons/fa';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { courses as allCoursesData } from '../data/courses';
+import { demoPageData } from '../data/harddata';
 import type { Course } from '../data/courses';
 import CourseDetailModal from '../components/CourseDetailModal';
 
@@ -15,7 +16,10 @@ export default function DemoPage() {
   const navigate = useNavigate();
   // Use the shared course data
   const courses: Course[] = allCoursesData;
-  const filteredCourses: Course[] = filter === 'All' ? courses : courses.filter((c: Course) => c.category === filter);
+  const filteredCourses: Course[] =
+    filter === 'All'
+      ? courses
+      : courses.filter((c: Course) => c.category === filter);
 
   // Only show 4 courses in Popular Courses
   const popularCourses: Course[] = filteredCourses.slice(0, 4);
@@ -50,12 +54,8 @@ export default function DemoPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className={styles.heroTitle}>
-            Become a Creative Pro — Learn. Build. Succeed.
-          </h1>
-          <p className={styles.heroSubtext}>
-            Master design, development, and digital strategy with expert-led online classes.
-          </p>
+          <h1 className={styles.heroTitle}>{demoPageData.heroTitle}</h1>
+          <p className={styles.heroSubtext}>{demoPageData.heroSubtext}</p>
           <div className={styles.heroButtons}>
             <motion.button
               className={styles.cta}
@@ -63,7 +63,7 @@ export default function DemoPage() {
               transition={{ type: 'spring', stiffness: 300 }}
               onClick={handleBrowseCourses}
             >
-              Browse Courses
+              {demoPageData.heroButtons.browseCourses}
             </motion.button>
             <motion.button
               className={styles.ctaSecondary}
@@ -71,67 +71,33 @@ export default function DemoPage() {
               transition={{ type: 'spring', stiffness: 300 }}
               onClick={handleJoinOnlineClass}
             >
-              Join Online Class
+              {demoPageData.heroButtons.joinOnline}
             </motion.button>
           </div>
         </motion.div>
       </section>
 
       <section className={styles.skillsSection}>
-        <h2 className={styles.skillsTitle}>What You Can Learn</h2>
+        <h2 className={styles.skillsTitle}>{demoPageData.skillsTitle}</h2>
         <div className={styles.skillsGrid}>
-          <motion.div
-            className={styles.skillBlock}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7 }}
-          >
-            <FaCode className={styles.skillIcon} />
-            <h3 className={styles.skillName}>Web & Mobile Development</h3>
-            <p className={styles.skillDesc}>
-              Learn HTML, CSS, JavaScript, React, and more to build modern web and mobile apps.
-            </p>
-          </motion.div>
-          <motion.div
-            className={styles.skillBlock}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-          >
-            <FaPaintBrush className={styles.skillIcon} />
-            <h3 className={styles.skillName}>Graphic Design</h3>
-            <p className={styles.skillDesc}>
-              Master Photoshop, Illustrator, and design theory to create stunning visuals.
-            </p>
-          </motion.div>
-          <motion.div
-            className={styles.skillBlock}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            <FaVideo className={styles.skillIcon} />
-            <h3 className={styles.skillName}>Video Editing & Motion Graphics</h3>
-            <p className={styles.skillDesc}>
-              Learn Premiere, After Effects, and storytelling techniques for engaging videos.
-            </p>
-          </motion.div>
-          <motion.div
-            className={styles.skillBlock}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-          >
-            <FaBullhorn className={styles.skillIcon} />
-            <h3 className={styles.skillName}>Digital Marketing</h3>
-            <p className={styles.skillDesc}>
-              Learn SEO, content marketing, paid ads, and email marketing to grow your brand.
-            </p>
-          </motion.div>
+          {demoPageData.skills.map((skill, idx) => {
+            const Icon =
+              [FaCode, FaPaintBrush, FaVideo, FaBullhorn][idx] ?? FaCode;
+            return (
+              <motion.div
+                className={styles.skillBlock}
+                key={skill.name}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.7, delay: idx * 0.1 }}
+              >
+                <Icon className={styles.skillIcon} />
+                <h3 className={styles.skillName}>{skill.name}</h3>
+                <p className={styles.skillDesc}>{skill.desc}</p>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 
@@ -145,9 +111,18 @@ export default function DemoPage() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7 }}
           >
-            <span className={styles.valueIcon} role="img" aria-label="Industry Experts">🧑‍🏫</span>
+            <span
+              className={styles.valueIcon}
+              role="img"
+              aria-label="Industry Experts"
+            >
+              🧑‍🏫
+            </span>
             <h3 className={styles.valueName}>Learn from Industry Experts</h3>
-            <p className={styles.valueDesc}>Instructors with real-world experience delivering industry insights.</p>
+            <p className={styles.valueDesc}>
+              Instructors with real-world experience delivering industry
+              insights.
+            </p>
           </motion.div>
           <motion.div
             className={styles.valueBlock}
@@ -156,9 +131,17 @@ export default function DemoPage() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            <span className={styles.valueIcon} role="img" aria-label="Project-Based Learning">🧠</span>
+            <span
+              className={styles.valueIcon}
+              role="img"
+              aria-label="Project-Based Learning"
+            >
+              🧠
+            </span>
             <h3 className={styles.valueName}>Project-Based Learning</h3>
-            <p className={styles.valueDesc}>Develop expertise by working on real-world tasks and projects.</p>
+            <p className={styles.valueDesc}>
+              Develop expertise by working on real-world tasks and projects.
+            </p>
           </motion.div>
           <motion.div
             className={styles.valueBlock}
@@ -167,9 +150,17 @@ export default function DemoPage() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <span className={styles.valueIcon} role="img" aria-label="Flexible & Self-Paced">🕒</span>
+            <span
+              className={styles.valueIcon}
+              role="img"
+              aria-label="Flexible & Self-Paced"
+            >
+              🕒
+            </span>
             <h3 className={styles.valueName}>Flexible & Self-Paced</h3>
-            <p className={styles.valueDesc}>Learn anytime, anywhere with adaptable schedules.</p>
+            <p className={styles.valueDesc}>
+              Learn anytime, anywhere with adaptable schedules.
+            </p>
           </motion.div>
           <motion.div
             className={styles.valueBlock}
@@ -178,9 +169,17 @@ export default function DemoPage() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            <span className={styles.valueIcon} role="img" aria-label="Certificates of Completion">📜</span>
+            <span
+              className={styles.valueIcon}
+              role="img"
+              aria-label="Certificates of Completion"
+            >
+              📜
+            </span>
             <h3 className={styles.valueName}>Certificates of Completion</h3>
-            <p className={styles.valueDesc}>Earn shareable proof of achievement for career advancement.</p>
+            <p className={styles.valueDesc}>
+              Earn shareable proof of achievement for career advancement.
+            </p>
           </motion.div>
           <motion.div
             className={styles.valueBlock}
@@ -189,9 +188,17 @@ export default function DemoPage() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7, delay: 0.4 }}
           >
-            <span className={styles.valueIcon} role="img" aria-label="Job-Ready Skills">💼</span>
+            <span
+              className={styles.valueIcon}
+              role="img"
+              aria-label="Job-Ready Skills"
+            >
+              💼
+            </span>
             <h3 className={styles.valueName}>Job-Ready Skills</h3>
-            <p className={styles.valueDesc}>Acquire market-relevant skills tailored to industry demands.</p>
+            <p className={styles.valueDesc}>
+              Acquire market-relevant skills tailored to industry demands.
+            </p>
           </motion.div>
         </div>
       </section>
@@ -199,10 +206,12 @@ export default function DemoPage() {
       <section className={styles.coursesSection}>
         <h2 className={styles.coursesTitle}>Popular Courses</h2>
         <div className={styles.coursesFilters}>
-          {['All', 'Development', 'Design', 'Marketing'].map(cat => (
+          {['All', 'Development', 'Design', 'Marketing'].map((cat) => (
             <button
               key={cat}
-              className={styles.filterBtn + (filter === cat ? ' ' + styles.active : '')}
+              className={
+                styles.filterBtn + (filter === cat ? ' ' + styles.active : '')
+              }
               onClick={() => setFilter(cat)}
             >
               {cat}
@@ -220,47 +229,66 @@ export default function DemoPage() {
               transition={{ duration: 0.7, delay: idx * 0.1 }}
               whileHover={{ scale: 1.03, boxShadow: '0 8px 40px #34495e33' }}
             >
-              <div className={styles.courseThumb} style={{ backgroundImage: `url('${course.img}')` }} />
+              <div
+                className={styles.courseThumb}
+                style={{ backgroundImage: `url('${course.img}')` }}
+              />
               <div className={styles.courseContent}>
                 <h3 className={styles.courseTitle}>{course.title}</h3>
                 <p className={styles.courseDesc}>{course.desc}</p>
                 <div className={styles.courseMeta}>
                   {course.tags.map((tag: string) => (
-                    <span className={styles.tag} key={tag}>{tag}</span>
+                    <span className={styles.tag} key={tag}>
+                      {tag}
+                    </span>
                   ))}
                 </div>
-                <button className={styles.courseBtn} onClick={() => { setSelectedCourse(course); setModalOpen(true); }}>View Course</button>
+                <button
+                  className={styles.courseBtn}
+                  onClick={() => {
+                    setSelectedCourse(course);
+                    setModalOpen(true);
+                  }}
+                >
+                  View Course
+                </button>
               </div>
             </motion.div>
           ))}
         </div>
-        <CourseDetailModal course={selectedCourse} open={modalOpen} onClose={() => setModalOpen(false)} />
+        <CourseDetailModal
+          course={selectedCourse}
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
+        />
       </section>
 
       <section className={styles.roadmapSection}>
-        <h2 className={styles.roadmapTitle}>Learning Path / Curriculum Roadmap</h2>
+        <h2 className={styles.roadmapTitle}>
+          Learning Path / Curriculum Roadmap
+        </h2>
         <div className={styles.roadmapTimeline}>
           {[
             {
               icon: '🏁',
               title: 'Getting Started',
-              desc: 'Introduction to foundational skills & concepts.'
+              desc: 'Introduction to foundational skills & concepts.',
             },
             {
               icon: '🔨',
               title: 'Build Projects',
-              desc: 'Hands-on learning through real-world assignments.'
+              desc: 'Hands-on learning through real-world assignments.',
             },
             {
               icon: '📜',
               title: 'Earn Certificate',
-              desc: 'Completion credentials validating acquired expertise.'
+              desc: 'Completion credentials validating acquired expertise.',
             },
             {
               icon: '🚀',
               title: 'Portfolio Ready',
-              desc: 'Prepare industry-level work samples for career growth.'
-            }
+              desc: 'Prepare industry-level work samples for career growth.',
+            },
           ].map((step, idx) => (
             <motion.div
               className={styles.roadmapStep}
@@ -271,7 +299,13 @@ export default function DemoPage() {
               transition={{ duration: 0.7, delay: idx * 0.15 }}
               whileHover={{ scale: 1.05, boxShadow: '0 8px 40px #34495e33' }}
             >
-              <span className={styles.roadmapIcon} role="img" aria-label={step.title}>{step.icon}</span>
+              <span
+                className={styles.roadmapIcon}
+                role="img"
+                aria-label={step.title}
+              >
+                {step.icon}
+              </span>
               <h3 className={styles.roadmapStepTitle}>{step.title}</h3>
               <p className={styles.roadmapStepDesc}>{step.desc}</p>
               {idx < 3 && <div className={styles.roadmapConnector} />}
@@ -295,9 +329,18 @@ export default function DemoPage() {
           >
             <span className={styles.communityIcon}>
               {/* Telegram SVG */}
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="20" fill="#229ED9"/>
-                <path d="M29.5 12.5L25.5 28.5C25.5 28.5 25 29.5 24 29.5C23.5 29.5 22.5 29 22 28.5L18.5 25.5L16.5 27.5C16.5 27.5 16 28 15.5 28C15 28 15 27.5 15 27.5L13 20.5L29 13.5C29 13.5 29.5 13 29.5 12.5Z" fill="white"/>
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 40 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="20" cy="20" r="20" fill="#229ED9" />
+                <path
+                  d="M29.5 12.5L25.5 28.5C25.5 28.5 25 29.5 24 29.5C23.5 29.5 22.5 29 22 28.5L18.5 25.5L16.5 27.5C16.5 27.5 16 28 15.5 28C15 28 15 27.5 15 27.5L13 20.5L29 13.5C29 13.5 29.5 13 29.5 12.5Z"
+                  fill="white"
+                />
               </svg>
             </span>
             <h3>Join on Telegram</h3>
@@ -315,9 +358,18 @@ export default function DemoPage() {
           >
             <span className={styles.communityIcon}>
               {/* Discord SVG */}
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="20" fill="#5865F2"/>
-                <path d="M27.5 26C27.5 26 26.5 25.5 26 25C27.5 24.5 28.5 23.5 28.5 23.5C28.5 23.5 27.5 24 26.5 24.5C25.5 24 24.5 23.5 24.5 23.5C24.5 23.5 25.5 24.5 27 25C26.5 25.5 25.5 26 25.5 26C25.5 26 26.5 25.5 27.5 26ZM15.5 26C15.5 26 16.5 25.5 17 25C15.5 24.5 14.5 23.5 14.5 23.5C14.5 23.5 15.5 24 16.5 24.5C17.5 24 18.5 23.5 18.5 23.5C18.5 23.5 17.5 24.5 16 25C16.5 25.5 17.5 26 17.5 26C17.5 26 16.5 25.5 15.5 26ZM20 13C16.1 13 13 16.1 13 20C13 23.9 16.1 27 20 27C23.9 27 27 23.9 27 20C27 16.1 23.9 13 20 13ZM20 25.5C17.2 25.5 15 23.3 15 20.5C15 17.7 17.2 15.5 20 15.5C22.8 15.5 25 17.7 25 20.5C25 23.3 22.8 25.5 20 25.5Z" fill="white"/>
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 40 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="20" cy="20" r="20" fill="#5865F2" />
+                <path
+                  d="M27.5 26C27.5 26 26.5 25.5 26 25C27.5 24.5 28.5 23.5 28.5 23.5C28.5 23.5 27.5 24 26.5 24.5C25.5 24 24.5 23.5 24.5 23.5C24.5 23.5 25.5 24.5 27 25C26.5 25.5 25.5 26 25.5 26C25.5 26 26.5 25.5 27.5 26ZM15.5 26C15.5 26 16.5 25.5 17 25C15.5 24.5 14.5 23.5 14.5 23.5C14.5 23.5 15.5 24 16.5 24.5C17.5 24 18.5 23.5 18.5 23.5C18.5 23.5 17.5 24.5 16 25C16.5 25.5 17.5 26 17.5 26C17.5 26 16.5 25.5 15.5 26ZM20 13C16.1 13 13 16.1 13 20C13 23.9 16.1 27 20 27C23.9 27 27 23.9 27 20C27 16.1 23.9 13 20 13ZM20 25.5C17.2 25.5 15 23.3 15 20.5C15 17.7 17.2 15.5 20 15.5C22.8 15.5 25 17.7 25 20.5C25 23.3 22.8 25.5 20 25.5Z"
+                  fill="white"
+                />
               </svg>
             </span>
             <h3>Join on Discord</h3>
@@ -335,15 +387,32 @@ export default function DemoPage() {
           >
             <span className={styles.communityIcon}>
               {/* TikTok SVG */}
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="20" fill="#000"/>
-                <path d="M27 18.5C25.6 18.5 24.5 17.4 24.5 16V14.5H22.5V25.5C22.5 26.3 21.8 27 21 27C20.2 27 19.5 26.3 19.5 25.5C19.5 24.7 20.2 24 21 24C21.2 24 21.4 24.1 21.5 24.2V22.2C21.3 22.1 21.2 22 21 22C19.1 22 17.5 23.6 17.5 25.5C17.5 27.4 19.1 29 21 29C22.9 29 24.5 27.4 24.5 25.5V18.5H27Z" fill="#fff"/>
-                <path d="M27 18.5C25.6 18.5 24.5 17.4 24.5 16V14.5H22.5V25.5C22.5 26.3 21.8 27 21 27C20.2 27 19.5 26.3 19.5 25.5C19.5 24.7 20.2 24 21 24C21.2 24 21.4 24.1 21.5 24.2V22.2C21.3 22.1 21.2 22 21 22C19.1 22 17.5 23.6 17.5 25.5C17.5 27.4 19.1 29 21 29C22.9 29 24.5 27.4 24.5 25.5V18.5H27Z" fill="#25F4EE"/>
-                <path d="M27 18.5C25.6 18.5 24.5 17.4 24.5 16V14.5H22.5V25.5C22.5 26.3 21.8 27 21 27C20.2 27 19.5 26.3 19.5 25.5C19.5 24.7 20.2 24 21 24C21.2 24 21.4 24.1 21.5 24.2V22.2C21.3 22.1 21.2 22 21 22C19.1 22 17.5 23.6 17.5 25.5C17.5 27.4 19.1 29 21 29C22.9 29 24.5 27.4 24.5 25.5V18.5H27Z" fill="#FE2C55"/>
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 40 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="20" cy="20" r="20" fill="#000" />
+                <path
+                  d="M27 18.5C25.6 18.5 24.5 17.4 24.5 16V14.5H22.5V25.5C22.5 26.3 21.8 27 21 27C20.2 27 19.5 26.3 19.5 25.5C19.5 24.7 20.2 24 21 24C21.2 24 21.4 24.1 21.5 24.2V22.2C21.3 22.1 21.2 22 21 22C19.1 22 17.5 23.6 17.5 25.5C17.5 27.4 19.1 29 21 29C22.9 29 24.5 27.4 24.5 25.5V18.5H27Z"
+                  fill="#fff"
+                />
+                <path
+                  d="M27 18.5C25.6 18.5 24.5 17.4 24.5 16V14.5H22.5V25.5C22.5 26.3 21.8 27 21 27C20.2 27 19.5 26.3 19.5 25.5C19.5 24.7 20.2 24 21 24C21.2 24 21.4 24.1 21.5 24.2V22.2C21.3 22.1 21.2 22 21 22C19.1 22 17.5 23.6 17.5 25.5C17.5 27.4 19.1 29 21 29C22.9 29 24.5 27.4 24.5 25.5V18.5H27Z"
+                  fill="#25F4EE"
+                />
+                <path
+                  d="M27 18.5C25.6 18.5 24.5 17.4 24.5 16V14.5H22.5V25.5C22.5 26.3 21.8 27 21 27C20.2 27 19.5 26.3 19.5 25.5C19.5 24.7 20.2 24 21 24C21.2 24 21.4 24.1 21.5 24.2V22.2C21.3 22.1 21.2 22 21 22C19.1 22 17.5 23.6 17.5 25.5C17.5 27.4 19.1 29 21 29C22.9 29 24.5 27.4 24.5 25.5V18.5H27Z"
+                  fill="#FE2C55"
+                />
               </svg>
             </span>
             <h3>Follow on TikTok</h3>
-            <p>Watch tips, tutorials, and success stories on our TikTok channel.</p>
+            <p>
+              Watch tips, tutorials, and success stories on our TikTok channel.
+            </p>
           </motion.a>
         </div>
         <div className={styles.communityStats}>
@@ -355,36 +424,82 @@ export default function DemoPage() {
       <section className={styles.faqSection}>
         <h2 className={styles.faqTitle}>Frequently Asked Questions</h2>
         <div className={styles.faqList}>
-          <motion.div className={styles.faqItem} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}>
+          <motion.div
+            className={styles.faqItem}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
             <h4>Do I need experience to start?</h4>
             <p>No, beginner-friendly courses are available.</p>
           </motion.div>
-          <motion.div className={styles.faqItem} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6, delay: 0.1 }}>
+          <motion.div
+            className={styles.faqItem}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <h4>Are these classes self-paced?</h4>
             <p>Yes, learn at your own convenience.</p>
           </motion.div>
-          <motion.div className={styles.faqItem} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6, delay: 0.2 }}>
+          <motion.div
+            className={styles.faqItem}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <h4>What software/tools do I need?</h4>
             <p>Depends on the course, all requirements are provided.</p>
           </motion.div>
-          <motion.div className={styles.faqItem} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6, delay: 0.3 }}>
+          <motion.div
+            className={styles.faqItem}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             <h4>Are certificates official?</h4>
             <p>Yes, industry-recognized certifications are offered.</p>
           </motion.div>
-          <motion.div className={styles.faqItem} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6, delay: 0.4 }}>
+          <motion.div
+            className={styles.faqItem}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             <h4>Can I get help if I'm stuck?</h4>
-            <p>Absolutely! Mentors and the community are here to support you.</p>
+            <p>
+              Absolutely! Mentors and the community are here to support you.
+            </p>
           </motion.div>
         </div>
       </section>
 
       <section className={styles.bottomCtaSection}>
-        <motion.div className={styles.bottomCtaContent} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.8 }}>
-          <h2 className={styles.bottomCtaTitle}>Start Learning Today</h2>
-          <p className={styles.bottomCtaSubtext}>Free to explore. Affordable to master. Your future starts now.</p>
+        <motion.div
+          className={styles.bottomCtaContent}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className={styles.bottomCtaTitle}>
+            {demoPageData.bottomCtaTitle}
+          </h2>
+          <p className={styles.bottomCtaSubtext}>
+            {demoPageData.bottomCtaSubtext}
+          </p>
           <div className={styles.bottomCtaButtons}>
-            <button className={styles.cta}>Browse Courses</button>
-            <button className={styles.ctaSecondary}>Join Online Class</button>
+            <button className={styles.cta}>
+              {demoPageData.bottomCtaButtons.browse}
+            </button>
+            <button className={styles.ctaSecondary}>
+              {demoPageData.bottomCtaButtons.join}
+            </button>
           </div>
         </motion.div>
       </section>

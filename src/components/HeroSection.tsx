@@ -1,25 +1,35 @@
 import { motion } from 'framer-motion';
 import styles from './HeroSection.module.css';
+import { heroData } from '../data/harddata';
 
-export default function HeroSection({ onExploreLearning, onExploreService }: {
+export default function HeroSection({
+  onExploreLearning,
+  onExploreService,
+}: {
   onExploreLearning: () => void;
   onExploreService: () => void;
 }) {
   return (
-    <section className={styles.heroSection} style={{
-      background: 'linear-gradient(to bottom right, #f47c3c, #34495e)',
-      color: '#fff',
-      padding: '4rem 2rem',
-      textAlign: 'center',
-    }}>
+    <section
+      className={styles.heroSection}
+      style={{
+        background: 'linear-gradient(to bottom right, #f47c3c, #34495e)',
+        color: '#fff',
+        padding: '4rem 2rem',
+        textAlign: 'center',
+      }}
+    >
       <motion.div
         className={styles.heroContent}
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <h1 className={styles.heroTitle} style={{ fontSize: '3rem', marginBottom: '1rem' }}>
-          Dream More, Achieve More.
+        <h1
+          className={styles.heroTitle}
+          style={{ fontSize: '3rem', marginBottom: '1rem' }}
+        >
+          {heroData.title}
         </h1>
         <div className={styles.heroButtons}>
           <button
@@ -35,10 +45,12 @@ export default function HeroSection({ onExploreLearning, onExploreService }: {
               cursor: 'pointer',
               transition: 'transform 0.2s',
             }}
-            onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+            onMouseOver={(e) =>
+              (e.currentTarget.style.transform = 'scale(1.05)')
+            }
             onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
           >
-            Explore Learning
+            {heroData.ctaPrimary}
           </button>
           <button
             className={styles.ctaSecondary}
@@ -54,10 +66,12 @@ export default function HeroSection({ onExploreLearning, onExploreService }: {
               cursor: 'pointer',
               transition: 'transform 0.2s',
             }}
-            onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+            onMouseOver={(e) =>
+              (e.currentTarget.style.transform = 'scale(1.05)')
+            }
             onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
           >
-            Explore Our Service
+            {heroData.ctaSecondary}
           </button>
         </div>
       </motion.div>

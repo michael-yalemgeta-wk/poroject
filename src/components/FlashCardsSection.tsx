@@ -1,26 +1,12 @@
 import { motion } from 'framer-motion';
 import styles from './FlashCardsSection.module.css';
-
-const cards = [
-  {
-    title: 'Our Mission',
-    text: 'Empowering learners and organizations to dream bigger and achieve more through innovative, accessible education and services.',
-  },
-  {
-    title: 'Our Vision',
-    text: 'To be the leading catalyst for personal and professional growth, inspiring a world where everyone can realize their full potential.',
-  },
-  {
-    title: 'Our Policy',
-    text: 'We are committed to inclusivity, quality, and continuous improvement in everything we do.',
-  },
-];
+import { aboutData } from '../data/harddata';
 
 export default function FlashCardsSection() {
   return (
     <section className={styles.flashCardsSection}>
       <div className={styles.cardsContainer}>
-        {cards.map((card, idx) => (
+        {aboutData.cards.map((card, idx) => (
           <motion.div
             className={styles.card}
             key={card.title}
