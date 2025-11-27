@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { courses as allCoursesData } from '../data/courses';
 import { demoPageData } from '../data/harddata';
+import { communityLinks, communityStats } from '../data/community';
 import type { Course } from '../data/courses';
 import CourseDetailModal from '../components/CourseDetailModal';
 
@@ -317,165 +318,124 @@ export default function DemoPage() {
       <section className={styles.communitySection}>
         <h2 className={styles.communityTitle}>Join the Community</h2>
         <div className={styles.communityOptions}>
-          <motion.a
-            href="https://t.me/yourchannel"
-            className={styles.communityBlock + ' ' + styles.telegram}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7 }}
-          >
-            <span className={styles.communityIcon}>
-              {/* Telegram SVG */}
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 40 40"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="20" cy="20" r="20" fill="#229ED9" />
-                <path
-                  d="M29.5 12.5L25.5 28.5C25.5 28.5 25 29.5 24 29.5C23.5 29.5 22.5 29 22 28.5L18.5 25.5L16.5 27.5C16.5 27.5 16 28 15.5 28C15 28 15 27.5 15 27.5L13 20.5L29 13.5C29 13.5 29.5 13 29.5 12.5Z"
-                  fill="white"
-                />
-              </svg>
-            </span>
-            <h3>Join on Telegram</h3>
-            <p>Connect instantly with our learning community on Telegram.</p>
-          </motion.a>
-          <motion.a
-            href="https://discord.gg/yourserver"
-            className={styles.communityBlock + ' ' + styles.discord}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-          >
-            <span className={styles.communityIcon}>
-              {/* Discord SVG */}
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 40 40"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="20" cy="20" r="20" fill="#5865F2" />
-                <path
-                  d="M27.5 26C27.5 26 26.5 25.5 26 25C27.5 24.5 28.5 23.5 28.5 23.5C28.5 23.5 27.5 24 26.5 24.5C25.5 24 24.5 23.5 24.5 23.5C24.5 23.5 25.5 24.5 27 25C26.5 25.5 25.5 26 25.5 26C25.5 26 26.5 25.5 27.5 26ZM15.5 26C15.5 26 16.5 25.5 17 25C15.5 24.5 14.5 23.5 14.5 23.5C14.5 23.5 15.5 24 16.5 24.5C17.5 24 18.5 23.5 18.5 23.5C18.5 23.5 17.5 24.5 16 25C16.5 25.5 17.5 26 17.5 26C17.5 26 16.5 25.5 15.5 26ZM20 13C16.1 13 13 16.1 13 20C13 23.9 16.1 27 20 27C23.9 27 27 23.9 27 20C27 16.1 23.9 13 20 13ZM20 25.5C17.2 25.5 15 23.3 15 20.5C15 17.7 17.2 15.5 20 15.5C22.8 15.5 25 17.7 25 20.5C25 23.3 22.8 25.5 20 25.5Z"
-                  fill="white"
-                />
-              </svg>
-            </span>
-            <h3>Join on Discord</h3>
-            <p>Chat, share, and learn with our vibrant Discord community.</p>
-          </motion.a>
-          <motion.a
-            href="https://www.tiktok.com/@yourprofile"
-            className={styles.communityBlock + ' ' + styles.tiktok}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            <span className={styles.communityIcon}>
-              {/* TikTok SVG */}
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 40 40"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="20" cy="20" r="20" fill="#000" />
-                <path
-                  d="M27 18.5C25.6 18.5 24.5 17.4 24.5 16V14.5H22.5V25.5C22.5 26.3 21.8 27 21 27C20.2 27 19.5 26.3 19.5 25.5C19.5 24.7 20.2 24 21 24C21.2 24 21.4 24.1 21.5 24.2V22.2C21.3 22.1 21.2 22 21 22C19.1 22 17.5 23.6 17.5 25.5C17.5 27.4 19.1 29 21 29C22.9 29 24.5 27.4 24.5 25.5V18.5H27Z"
-                  fill="#fff"
-                />
-                <path
-                  d="M27 18.5C25.6 18.5 24.5 17.4 24.5 16V14.5H22.5V25.5C22.5 26.3 21.8 27 21 27C20.2 27 19.5 26.3 19.5 25.5C19.5 24.7 20.2 24 21 24C21.2 24 21.4 24.1 21.5 24.2V22.2C21.3 22.1 21.2 22 21 22C19.1 22 17.5 23.6 17.5 25.5C17.5 27.4 19.1 29 21 29C22.9 29 24.5 27.4 24.5 25.5V18.5H27Z"
-                  fill="#25F4EE"
-                />
-                <path
-                  d="M27 18.5C25.6 18.5 24.5 17.4 24.5 16V14.5H22.5V25.5C22.5 26.3 21.8 27 21 27C20.2 27 19.5 26.3 19.5 25.5C19.5 24.7 20.2 24 21 24C21.2 24 21.4 24.1 21.5 24.2V22.2C21.3 22.1 21.2 22 21 22C19.1 22 17.5 23.6 17.5 25.5C17.5 27.4 19.1 29 21 29C22.9 29 24.5 27.4 24.5 25.5V18.5H27Z"
-                  fill="#FE2C55"
-                />
-              </svg>
-            </span>
-            <h3>Follow on TikTok</h3>
-            <p>
-              Watch tips, tutorials, and success stories on our TikTok channel.
-            </p>
-          </motion.a>
+          {communityLinks
+            .filter((l) => l.enabled !== false)
+            .map((link, idx) => {
+              const img = (key: string) => {
+                // return the same inline SVGs used previously by key
+                if (key === 'telegram')
+                  return (
+                    <svg
+                      width="40"
+                      height="40"
+                      viewBox="0 0 40 40"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle cx="20" cy="20" r="20" fill="#229ED9" />
+                      <path
+                        d="M29.5 12.5L25.5 28.5C25.5 28.5 25 29.5 24 29.5C23.5 29.5 22.5 29 22 28.5L18.5 25.5L16.5 27.5C16.5 27.5 16 28 15.5 28C15 28 15 27.5 15 27.5L13 20.5L29 13.5C29 13.5 29.5 13 29.5 12.5Z"
+                        fill="white"
+                      />
+                    </svg>
+                  );
+                if (key === 'discord')
+                  return (
+                    <svg
+                      width="40"
+                      height="40"
+                      viewBox="0 0 40 40"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle cx="20" cy="20" r="20" fill="#5865F2" />
+                      <path
+                        d="M27.5 26C27.5 26 26.5 25.5 26 25C27.5 24.5 28.5 23.5 28.5 23.5C28.5 23.5 27.5 24 26.5 24.5C25.5 24 24.5 23.5 24.5 23.5C24.5 23.5 25.5 24.5 27 25C26.5 25.5 25.5 26 25.5 26C25.5 26 26.5 25.5 27.5 26ZM15.5 26C15.5 26 16.5 25.5 17 25C15.5 24.5 14.5 23.5 14.5 23.5C14.5 23.5 15.5 24 16.5 24.5C17.5 24 18.5 23.5 18.5 23.5C18.5 23.5 17.5 24.5 16 25C16.5 25.5 17.5 26 17.5 26C17.5 26 16.5 25.5 15.5 26ZM20 13C16.1 13 13 16.1 13 20C13 23.9 16.1 27 20 27C23.9 27 27 23.9 27 20C27 16.1 23.9 13 20 13ZM20 25.5C17.2 25.5 15 23.3 15 20.5C15 17.7 17.2 15.5 20 15.5C22.8 15.5 25 17.7 25 20.5C25 23.3 22.8 25.5 20 25.5Z"
+                        fill="white"
+                      />
+                    </svg>
+                  );
+                // tiktok or fallback
+                return (
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="20" cy="20" r="20" fill="#000" />
+                    <path
+                      d="M27 18.5C25.6 18.5 24.5 17.4 24.5 16V14.5H22.5V25.5C22.5 26.3 21.8 27 21 27C20.2 27 19.5 26.3 19.5 25.5C19.5 24.7 20.2 24 21 24C21.2 24 21.4 24.1 21.5 24.2V22.2C21.3 22.1 21.2 22 21 22C19.1 22 17.5 23.6 17.5 25.5C17.5 27.4 19.1 29 21 29C22.9 29 24.5 27.4 24.5 25.5V18.5H27Z"
+                      fill="#fff"
+                    />
+                    <path
+                      d="M27 18.5C25.6 18.5 24.5 17.4 24.5 16V14.5H22.5V25.5C22.5 26.3 21.8 27 21 27C20.2 27 19.5 26.3 19.5 25.5C19.5 24.7 20.2 24 21 24C21.2 24 21.4 24.1 21.5 24.2V22.2C21.3 22.1 21.2 22 21 22C19.1 22 17.5 23.6 17.5 25.5C17.5 27.4 19.1 29 21 29C22.9 29 24.5 27.4 24.5 25.5V18.5H27Z"
+                      fill="#25F4EE"
+                    />
+                    <path
+                      d="M27 18.5C25.6 18.5 24.5 17.4 24.5 16V14.5H22.5V25.5C22.5 26.3 21.8 27 21 27C20.2 27 19.5 26.3 19.5 25.5C19.5 24.7 20.2 24 21 24C21.2 24 21.4 24.1 21.5 24.2V22.2C21.3 22.1 21.2 22 21 22C19.1 22 17.5 23.6 17.5 25.5C17.5 27.4 19.1 29 21 29C22.9 29 24.5 27.4 24.5 25.5V18.5H27Z"
+                      fill="#FE2C55"
+                    />
+                  </svg>
+                );
+              };
+
+              const normalize = (u: string) => {
+                if (!u) return u;
+                const t = u.trim();
+                if (/^https?:\/\//i.test(t) || /^\/\//.test(t)) return t;
+                return `https://${t}`;
+              };
+
+              return (
+                <motion.a
+                  key={link.id}
+                  href={normalize(link.href)}
+                  className={
+                    styles.communityBlock +
+                    ' ' +
+                    styles[link.styleKey || 'telegram']
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.7, delay: idx * 0.1 }}
+                >
+                  <span className={styles.communityIcon}>
+                    {img(link.iconKey || link.id)}
+                  </span>
+                  <h3>{link.title}</h3>
+                  <p>{link.desc}</p>
+                </motion.a>
+              );
+            })}
         </div>
         <div className={styles.communityStats}>
-          <span>500+ Active Students</span>
-          <span>100+ Weekly Conversations</span>
+          {communityStats.map((s) => (
+            <span key={s}>{s}</span>
+          ))}
         </div>
       </section>
 
       <section className={styles.faqSection}>
         <h2 className={styles.faqTitle}>Frequently Asked Questions</h2>
         <div className={styles.faqList}>
-          <motion.div
-            className={styles.faqItem}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h4>Do I need experience to start?</h4>
-            <p>No, beginner-friendly courses are available.</p>
-          </motion.div>
-          <motion.div
-            className={styles.faqItem}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <h4>Are these classes self-paced?</h4>
-            <p>Yes, learn at your own convenience.</p>
-          </motion.div>
-          <motion.div
-            className={styles.faqItem}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h4>What software/tools do I need?</h4>
-            <p>Depends on the course, all requirements are provided.</p>
-          </motion.div>
-          <motion.div
-            className={styles.faqItem}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <h4>Are certificates official?</h4>
-            <p>Yes, industry-recognized certifications are offered.</p>
-          </motion.div>
-          <motion.div
-            className={styles.faqItem}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <h4>Can I get help if I'm stuck?</h4>
-            <p>
-              Absolutely! Mentors and the community are here to support you.
-            </p>
-          </motion.div>
+          {demoPageData.faq?.map((item, idx) => (
+            <motion.div
+              className={styles.faqItem}
+              key={item.question}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+            >
+              <h4>{item.question}</h4>
+              <p>{item.answer}</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
