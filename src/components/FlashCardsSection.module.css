@@ -63,9 +63,12 @@
   .cardsContainer {
     flex-direction: column;
     align-items: center;
+    padding: 0 1rem;
   }
   .card {
-    max-width: 90vw;
-    min-width: 220px;
+    max-width: 100%;
+    width: 100%;
+    min-width: unset;
+    margin: 1rem 0;
   }
 }

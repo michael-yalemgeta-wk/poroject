@@ -66,14 +66,20 @@ export default function ServiceCardsSection() {
               whileHover={{ scale: 1.04, boxShadow: '0 8px 32px #34495e22' }}
             >
               <div className={styles.icon}>
-                <Icon size={38} color="#2C3E50" />
+                <Icon size={38} color={'var(--text)'} />
               </div>
               <h3 className={styles.title}>{service.title}</h3>
               <p className={styles.desc} style={descStyle}>
                 {service.desc}
               </p>
               {!isExpanded && (
-                <div style={{ marginTop: 8, fontSize: 13, color: '#f47c3c' }}>
+                <div
+                  style={{
+                    marginTop: 8,
+                    fontSize: 13,
+                    color: 'var(--primary)',
+                  }}
+                >
                   More...
                 </div>
               )}

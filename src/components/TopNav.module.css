@@ -1,0 +1,119 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 64px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2vw;
+  transition: background-color 0.3s, border-bottom 0.3s;
+}
+
+.brand {
+  min-width: 120px;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.linksContainer {
+  display: flex;
+  gap: 2.2rem;
+  align-items: center;
+}
+
+.navLink {
+  background: none;
+  border: none;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  transition: color 0.2s, border-bottom 0.2s;
+  border-bottom: 2.5px solid transparent;
+}
+
+.themeSwitch {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.switchTrack {
+  width: 54px;
+  height: 28px;
+  border-radius: 16px;
+  position: relative;
+  transition: background 0.3s;
+  margin: 0 0.7rem;
+  display: flex;
+  align-items: center;
+}
+
+.switchThumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  top: 2px;
+  transition: left 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.themeLabel {
+  font-weight: 700;
+  margin-left: 0.7rem;
+  transition: color 0.3s;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .linksContainer {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background: inherit; /* Will inherit from nav background */
+    padding: 1rem 0;
+    gap: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transform: translateY(-150%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 99;
+  }
+
+  .linksContainer.open {
+    transform: translateY(0);
+  }
+
+  .themeSwitch {
+    display: none; /* Optionally hide theme switch or move it to menu */
+  }
+  
+  /* If we want theme switch inside menu on mobile */
+  .linksContainer .themeSwitch {
+    display: flex;
+    margin-top: 1rem;
+  }
+}

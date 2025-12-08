@@ -191,18 +191,22 @@
   }
 }
 
-@media (max-width: 768px) {
-  .header {
-    padding: 1.5rem 0 1rem 0;
+  @media (max-width: 768px) {
+    .header {
+      padding: 1.5rem 1rem 1rem 1rem;
+    }
+    .coursesGrid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 100%;
+      padding: 0 1rem;
+    }
+    .courseCard {
+      min-width: 0;
+      max-width: 100%;
+    }
+    .allCoursesPage {
+      padding: 0 0 4rem 0;
+    }
   }
-  .coursesGrid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    width: 98vw;
-    max-width: 98vw;
-  }
-  .courseCard {
-    min-width: 0;
-    max-width: 98vw;
-  }
-}

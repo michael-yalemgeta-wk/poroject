@@ -1,7 +1,7 @@
 .pageBg {
   min-height: 100vh;
-  background: #FDFDFD;
-  width: 100vw;
+  background: var(--bg);
+  width: 100%;
   overflow-x: hidden;
 }
 .header {
@@ -11,11 +11,11 @@
 .title {
   font-size: 2.5rem;
   font-weight: 900;
-  color: #2C3E50;
+  color: var(--text);
   margin-bottom: 0.7rem;
 }
 .subtitle {
-  color: #34495E;
+  color: var(--secondary);
   font-size: 1.2rem;
   margin-bottom: 2.2rem;
 }
@@ -26,20 +26,23 @@
   flex-wrap: wrap;
   margin-bottom: 2.5rem;
 }
-.tab, .activeTab {
+.tab,
+.activeTab {
   background: none;
   border: none;
   font-size: 1.1rem;
   font-weight: 700;
-  color: #34495E;
+  color: var(--secondary);
   padding: 0.5rem 1.5rem;
   border-radius: 99px;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 .activeTab {
-  background: #F47C3C;
-  color: #fff;
+  background: var(--primary);
+  color: var(--primary-contrast);
 }
 .grid {
   display: grid;
@@ -62,18 +65,24 @@
   }
 }
 .card {
-  background: #fff;
+  background: var(--surface);
   border-radius: 1.2rem;
-  box-shadow: 0 2px 16px #34495e11, 0 1.5px 8px #f47c3c11;
+  box-shadow:
+    0 2px 16px var(--shadow-1),
+    0 1.5px 8px var(--accent-shadow);
   overflow: hidden;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
   position: relative;
 }
 .card:hover {
-  box-shadow: 0 8px 32px #34495e22, 0 2px 16px #f47c3c33;
+  box-shadow:
+    0 8px 32px var(--shadow-2),
+    0 2px 16px var(--accent-shadow-2);
   transform: scale(1.04);
 }
 .thumb {
@@ -85,9 +94,12 @@
 }
 .overlay {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(44,62,80,0.55);
-  color: #fff;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(44, 62, 80, 0.55);
+  color: var(--primary-contrast);
   opacity: 0;
   display: flex;
   align-items: center;
@@ -107,15 +119,15 @@
   gap: 0.5rem;
 }
 .cardTitle {
-  color: #2C3E50;
+  color: var(--text);
   font-size: 1.15rem;
   font-weight: 800;
   margin-bottom: 0.2rem;
 }
 .tag {
   display: inline-block;
-  background: #F47C3C22;
-  color: #F47C3C;
+  background: var(--accent-shadow);
+  color: var(--primary);
   border-radius: 99px;
   font-size: 0.95rem;
   font-weight: 700;
@@ -123,14 +135,17 @@
   margin-bottom: 0.2rem;
 }
 .tagline {
-  color: #34495E;
+  color: var(--secondary);
   font-size: 0.98rem;
   font-weight: 500;
 }
 .modalOverlay {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.7);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(2px);
   z-index: 1000;
   display: flex;
@@ -139,9 +154,9 @@
   padding: 2vw;
 }
 .modal {
-  background: #fff;
+  background: var(--surface);
   border-radius: 1.5rem;
-  box-shadow: 0 8px 40px #34495e33;
+  box-shadow: 0 8px 40px var(--shadow-2);
   max-width: 480px;
   width: 100%;
   padding: 2.2rem 1.5rem 1.5rem 1.5rem;
@@ -161,24 +176,25 @@
 .modalTitle {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #2C3E50;
+  color: var(--text);
   margin: 0 0 0.7rem 0;
   text-align: center;
 }
 .modalMeta {
-  color: #F47C3C;
+  color: var(--primary);
   font-weight: 700;
   margin-bottom: 0.7rem;
   text-align: center;
 }
 .modalOverview {
-  color: #34495E;
+  color: var(--secondary);
   font-size: 1.1rem;
   margin-bottom: 1.1rem;
   text-align: center;
 }
-.modalTools, .modalResults {
-  color: #2C3E50;
+.modalTools,
+.modalResults {
+  color: var(--text);
   font-size: 1rem;
   margin-bottom: 0.5rem;
   text-align: center;
@@ -191,42 +207,48 @@
   margin-top: 1.2rem;
 }
 .caseBtn {
-  background: #F47C3C;
-  color: #fff;
+  background: var(--primary);
+  color: var(--primary-contrast);
   border: none;
   border-radius: 1.5rem;
   padding: 0.7rem 2rem;
   font-size: 1.1rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 2px 8px #f47c3c33;
-  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px var(--accent-shadow-2);
+  transition:
+    background 0.2s,
+    transform 0.2s;
 }
 .caseBtn:hover {
-  background: #F9A66C;
+  background: var(--primary-hover);
   transform: scale(1.05);
 }
 .closeBtn {
-  background: #fff;
-  color: #F47C3C;
-  border: 2px solid #F47C3C;
+  background: var(--surface);
+  color: var(--primary);
+  border: 2px solid var(--primary);
   border-radius: 1.5rem;
   padding: 0.7rem 2rem;
   font-size: 1.1rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border 0.2s,
+    transform 0.2s;
 }
 .closeBtn:hover {
-  background: #F47C3C;
-  color: #fff;
-  border: 2px solid #F47C3C;
+  background: var(--primary);
+  color: var(--primary-contrast);
+  border: 2px solid var(--primary);
   transform: scale(1.05);
 }
 .ctaSection {
-  width: 100vw;
+  width: 100%;
   min-height: 220px;
-  background: linear-gradient(120deg, #fff 60%, #ECF0F1 100%);
+  background: linear-gradient(120deg, var(--surface) 60%, var(--muted) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -238,7 +260,7 @@
 .ctaHeadline {
   font-size: 2rem;
   font-weight: 900;
-  color: #2C3E50;
+  color: var(--text);
   text-align: center;
   margin-bottom: 2.2rem;
   letter-spacing: 1px;
@@ -250,32 +272,39 @@
   flex-wrap: wrap;
 }
 .ctaBtn {
-  background: #F47C3C;
-  color: #fff;
+  background: var(--primary);
+  color: var(--primary-contrast);
   border: none;
   border-radius: 2rem;
   padding: 1rem 2.2rem;
   font-size: 1.15rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 2px 16px #f47c3c22;
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 16px var(--accent-shadow);
+  transition:
+    background 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 .ctaBtnOutline {
-  background: #fff;
-  color: #F47C3C;
-  border: 2px solid #F47C3C;
+  background: var(--surface);
+  color: var(--primary);
+  border: 2px solid var(--primary);
   border-radius: 2rem;
   padding: 1rem 2.2rem;
   font-size: 1.15rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border 0.2s,
+    transform 0.2s;
 }
 .ctaBtnOutline:hover {
-  background: #F47C3C;
-  color: #fff;
-  border: 2px solid #F47C3C;
+  background: var(--primary);
+  color: var(--primary-contrast);
+  border: 2px solid var(--primary);
   transform: scale(1.07);
 }
 @media (max-width: 700px) {

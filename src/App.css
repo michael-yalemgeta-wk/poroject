@@ -1,7 +1,8 @@
 * {
   box-sizing: border-box;
 }
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -15,7 +16,55 @@ html, body {
   margin: 0;
   padding: 0;
   text-align: initial;
-  background: #fff;
+  /* Use CSS variables so dark-mode can switch colors globally */
+  background: var(--bg, #fff);
+  color: var(--text, #2c3e50);
+}
+
+/* Make the in-app .root container a column flex so footer can sit at the
+   bottom using margin-top: auto on the footer element. This keeps the
+   footer at the viewport bottom when content is short but allows it to
+   follow content when the page is long. TopNav is fixed so we subtract
+   its height from the min-height to avoid overlap. */
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 64px);
+}
+
+/* Theme variables: default (light) and dark overrides. The App sets
+   the `dark-mode` class on a parent element to switch themes. These
+   variables are intentionally broad; components/CSS can consume them
+   using var(--name). */
+:root {
+  --bg: #fdfdfd;
+  --text: #2c3e50;
+  --surface: #ffffff;
+  --primary: #f47c3c;
+  --primary-hover: #f9a66c;
+  --secondary: #34495e;
+  --muted: #ecf0f1;
+  --primary-contrast: #ffffff;
+  /* shadow presets approximating the hex+alpha values used in code */
+  --shadow-1: rgba(52, 73, 94, 0.07);
+  --shadow-2: rgba(52, 73, 94, 0.13);
+  --accent-shadow: rgba(244, 124, 60, 0.07);
+  --accent-shadow-2: rgba(244, 124, 60, 0.2);
+}
+
+.dark-mode {
+  --bg: #1f2a36;
+  --text: #dfe8ee;
+  --surface: #27343c;
+  --primary: #f47c3c; /* keep accent; can adjust if desired */
+  --primary-hover: #f9a66c;
+  --secondary: #2c3e50;
+  --muted: #3a4a52;
+  --primary-contrast: #ffffff;
+  --shadow-1: rgba(0, 0, 0, 0.25);
+  --shadow-2: rgba(0, 0, 0, 0.45);
+  --accent-shadow: rgba(244, 124, 60, 0.12);
+  --accent-shadow-2: rgba(244, 124, 60, 0.28);
 }
 
 .logo {
@@ -105,7 +154,7 @@ html, body {
   padding: 96px 32px 32px 32px; /* top padding = topbar height + spacing */
   background: var(--card-bg);
   border-radius: 18px;
-  box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
   min-height: calc(100vh - 64px);
 }
 @media (max-width: 600px) {

@@ -13,8 +13,9 @@ export default function HeroSection({
     <section
       className={styles.heroSection}
       style={{
-        background: 'linear-gradient(to bottom right, #f47c3c, #34495e)',
-        color: '#fff',
+        background:
+          'linear-gradient(to bottom right, var(--primary), var(--secondary))',
+        color: 'var(--primary-contrast)',
         padding: '4rem 2rem',
         textAlign: 'center',
       }}
@@ -36,8 +37,8 @@ export default function HeroSection({
             className={styles.cta}
             onClick={onExploreLearning}
             style={{
-              background: '#fff',
-              color: '#f47c3c',
+              background: 'var(--surface)',
+              color: 'var(--primary)',
               padding: '0.8rem 1.5rem',
               borderRadius: '5px',
               fontWeight: 'bold',
@@ -57,9 +58,9 @@ export default function HeroSection({
             onClick={onExploreService}
             style={{
               background: 'transparent',
-              color: '#fff',
+              color: 'var(--primary-contrast)',
               padding: '0.8rem 1.5rem',
-              border: '2px solid #fff',
+              border: '2px solid var(--primary-contrast)',
               borderRadius: '5px',
               fontWeight: 'bold',
               margin: '0 0.5rem',

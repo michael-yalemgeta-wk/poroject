@@ -71,7 +71,10 @@ export default function PortfolioSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.7, delay: idx * 0.08 }}
-              whileHover={{ scale: 1.02, boxShadow: '0 8px 32px #34495e22' }}
+              whileHover={{
+                scale: 1.02,
+                boxShadow: '0 8px 32px var(--shadow-2)',
+              }}
             >
               <h3 className={styles.title}>{proj.title}</h3>
               <p className={styles.desc} style={descStyle}>
@@ -97,7 +100,13 @@ export default function PortfolioSection() {
               )}
 
               {!isExpanded && (
-                <div style={{ marginTop: 8, fontSize: 13, color: '#f47c3c' }}>
+                <div
+                  style={{
+                    marginTop: 8,
+                    fontSize: 13,
+                    color: 'var(--primary)',
+                  }}
+                >
                   More...
                 </div>
               )}

@@ -29,7 +29,7 @@ export default function WhyChooseUsSection() {
               whileHover={{ scale: 1.04, boxShadow: '0 8px 32px #34495e22' }}
             >
               <div className={styles.icon}>
-                <Icon size={32} color="#F47C3C" />
+                <Icon size={32} color={'var(--primary)'} />
               </div>
               <h3 className={styles.title}>{val.title}</h3>
               <p className={styles.desc}>{val.desc}</p>
