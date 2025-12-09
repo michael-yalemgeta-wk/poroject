@@ -144,9 +144,7 @@ function TopNav({ theme, setTheme }: TopNavProps) {
           <span
             className={styles.themeLabel}
             style={{ color: themeVars.navText }}
-          >
-            {theme === 'dark' ? 'Dark' : 'Light'} Mode
-          </span>
+          ></span>
         </div>
       </div>
 
@@ -255,9 +253,7 @@ function TopNavClean({ theme, setTheme }: TopNavProps) {
           <span
             className={styles.themeLabel}
             style={{ color: themeVars.navText }}
-          >
-            {theme === 'dark' ? 'Dark' : 'Light'}
-          </span>
+          ></span>
         </div>
       </div>
     </nav>
@@ -375,9 +371,7 @@ function TopNavFinal({ theme, setTheme }: TopNavProps) {
           <span
             className={styles.themeLabel}
             style={{ color: themeVars.navText }}
-          >
-            {theme === 'dark' ? 'Dark' : 'Light'} Mode
-          </span>
+          ></span>
         </div>
       </div>
     </nav>
