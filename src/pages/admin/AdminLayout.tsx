@@ -4,7 +4,12 @@ import auth from '../../utils/auth';
 import { useEffect, useState } from 'react';
 import adminApi from '../../api/adminApi';
 
-export default function AdminLayout() {
+type Props = {
+  theme: string;
+  setTheme: (t: string) => void;
+};
+
+export default function AdminLayout({ theme, setTheme }: Props) {
   const navigate = useNavigate();
   const [counts, setCounts] = useState<{ courses?: number }>({});
 
@@ -15,6 +20,10 @@ export default function AdminLayout() {
   function doLogout() {
     auth.logout();
     navigate('/admin/login');
+  }
+
+  function toggleTheme() {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   }
 
   return (
@@ -33,7 +42,28 @@ export default function AdminLayout() {
       </aside>
       <main className={styles.content}>
         <header className={styles.topbar}>
-          <div>Welcome, admin</div>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+            <button
+              onClick={() => navigate('/')}
+              className={styles.ghost}
+              title="Go to site homepage"
+            >
+              Home
+            </button>
+            <div>Welcome, admin</div>
+          </div>
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+            <button
+              onClick={toggleTheme}
+              className={styles.ghost}
+              title="Toggle theme"
+            >
+              {theme === 'dark' ? 'Light' : 'Dark'}
+            </button>
+            <button onClick={doLogout} className={styles.primary}>
+              Sign out
+            </button>
+          </div>
         </header>
         <section className={styles.pageBody}>
           <Outlet />

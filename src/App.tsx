@@ -180,6 +180,13 @@ function TopNav({ theme, setTheme }: TopNavProps) {
   );
 }
 
+function ConditionalTopNav({ theme, setTheme }: TopNavProps) {
+  // hide the main TopNav when inside admin routes
+  const location = useLocation();
+  if (location.pathname.startsWith('/admin')) return null;
+  return <TopNav theme={theme} setTheme={setTheme} />;
+}
+
 function MainApp() {
   const flashCardsRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
@@ -216,7 +223,7 @@ export default function App() {
   }, [theme]);
   return (
     <BrowserRouter>
-      <TopNav theme={theme} setTheme={setTheme} />
+      <ConditionalTopNav theme={theme} setTheme={setTheme} />
       <div
         className={theme === 'dark' ? 'dark-mode' : ''}
         style={{ paddingTop: 64 }}
@@ -233,7 +240,7 @@ export default function App() {
             path="/admin/*"
             element={
               <RequireAuth>
-                <AdminLayout />
+                <AdminLayout theme={theme} setTheme={setTheme} />
               </RequireAuth>
             }
           >
